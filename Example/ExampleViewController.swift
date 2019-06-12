@@ -219,5 +219,4 @@ class ExampleViewController: UIViewController, VerticalCarouselDelegate, Vertica
     func numberOfCards(VerticalCarouselView: VerticalCarouselView) -> Int {
         return markdowns.count
     }
-    
 }
