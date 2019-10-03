@@ -263,7 +263,7 @@ extension VerticalCarousel: UICollectionViewDelegateFlowLayout {
         printLog(log: "=== Card \(index) set new heights pair: actual=\(height.actual) max=\(height.max). Contraints will apply.")
         let yInsets = cardSpacing + topInset + visibleNextCardHeight
         let newHeight = max(height.max, verticalCarouselView.frame.size.height - yInsets)
-        let newActualHeight =  min(newHeight, height.actual)
+        let newActualHeight = height.actual > 0 ?  min(newHeight, height.actual) : newHeight
 
         let page = self.flowLayout.currentPage()
         let yBefore = self.flowLayout.getOffsetForPage(page: page )
@@ -302,9 +302,9 @@ extension VerticalCarousel: UICollectionViewDelegateFlowLayout {
 
         let itemSize = calculateItemSize(for: index)
 
-        let actualHeight = calculateActualItemHeight(for: index)
+        //let actualHeight = calculateActualItemHeight(for: index)
 
-        self.updateCellHeight(height: HeightsPair(actual: actualHeight, max: itemSize.height), atIndex: index)
+        //self.updateCellHeight(height: HeightsPair(actual: actualHeight, max: itemSize.height), atIndex: index)
 
         return itemSize
     }
