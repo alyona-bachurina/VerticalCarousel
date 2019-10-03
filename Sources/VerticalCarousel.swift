@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 public func printLog(log: CustomDebugStringConvertible?) {
     let formatter = DateFormatter()
