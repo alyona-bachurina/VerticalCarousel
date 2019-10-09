@@ -269,9 +269,7 @@ extension VerticalCarousel: UICollectionViewDelegateFlowLayout {
         let yBefore = self.flowLayout.getOffsetForPage(page: page )
 
         // store heights
-        while flowLayout.cellHeights.count <= index {
-            flowLayout.cellHeights.append(VerticalCarouselDefaults.heights)
-        }
+        self.flowLayout.initDefaultHeights(index: index)
 
         let oldHeight = flowLayout.cellHeights[index].max
         flowLayout.cellHeights[index] = HeightsPair(actual: newActualHeight, max: newHeight)

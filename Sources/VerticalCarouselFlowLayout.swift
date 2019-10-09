@@ -9,7 +9,7 @@ public enum VerticalCarouselDefaults {
 /// Custom `UICollectionViewFlowLayout` that provides the flowlayout information like paging and `VerticalCardCell` movements.
 internal class VerticalCarouselFlowLayout: UICollectionViewFlowLayout {
 
-    internal var cellHeights = [HeightsPair(0, 0)]
+    internal var cellHeights = [ VerticalCarouselDefaults.heights ]
     internal var lastCardAllowed: Int = 0
     internal var frameHeight: CGFloat = 0
     internal var lastProposedY: CGFloat = 0
@@ -75,6 +75,12 @@ internal class VerticalCarouselFlowLayout: UICollectionViewFlowLayout {
         return true
     }
 
+    internal func initDefaultHeights(index: Int){
+        while cellHeights.count <= index {
+            cellHeights.append(VerticalCarouselDefaults.heights)
+        }
+    }
+
     // Cell paging
     public func getPageFromOffset(offset: CGFloat) -> Int {
         var remainHeight = offset + topInset
@@ -91,6 +97,7 @@ internal class VerticalCarouselFlowLayout: UICollectionViewFlowLayout {
     }
 
     public func getOffsetForPage(page: Int) -> CGFloat {
+        self.initDefaultHeights(index: page)
         let num = page < cellHeights.count ? page: cellHeights.count
         let trimHeights = cellHeights[..<num]
         let offset = trimHeights.map {$0.max}.reduce(0, +)
