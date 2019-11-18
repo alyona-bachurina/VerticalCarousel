@@ -21,7 +21,7 @@ internal class VerticalCarouselFlowLayout: UICollectionViewFlowLayout {
     internal override func prepare() {
         super.prepare()
 
-        assert(collectionView?.numberOfSections == 1, "Number of sections should always be 1.")
+        //assert(collectionView?.numberOfSections == 1, "Number of sections should always be 1.")
         assert(collectionView?.isPagingEnabled == false, "Paging on the collectionview itself should never be enabled. To enable cell paging, use the isPagingEnabled property of the VerticalCarouselFlowLayout instead.")
     }
 

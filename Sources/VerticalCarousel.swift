@@ -222,8 +222,7 @@ extension VerticalCarousel: UICollectionViewDelegate, UICollectionViewDataSource
         verticalCarouselView.backgroundColor = UIColor.clear
         verticalCarouselView.showsVerticalScrollIndicator = false
         verticalCarouselView.delegate = self
-        //VerticalCarouselView.dataSource = self
-        verticalCarouselView.dataSource = self
+        //verticalCarouselView.dataSource = self
         self.addSubview(verticalCarouselView)
     }
 
